@@ -14,12 +14,13 @@ class Place(models.Model):
 
 class Image(models.Model):
     title = models.ForeignKey(Place, on_delete=models.CASCADE)
-    image = models.ImageField('Фото')
+    image = models.ImageField('Фото', upload_to='images/')
+    order = models.PositiveIntegerField('Номер', blank=True)
 
     def __str__(self):
-        return f'{self.id} {str(self.title)}'
+        return f'{self.order} {str(self.title)}'
 
     class Meta:
-        ordering = ['id']
+        ordering = ['order']
         verbose_name = 'Фото'
         verbose_name_plural = 'Фото'
