@@ -42,30 +42,23 @@
     {
       "type": "FeatureCollection",
       "features": [
+    {% for place in places %}
         {
           "type": "Feature",
           "geometry": {
             "type": "Point",
-            "coordinates": [37.62, 55.793676]
+            "coordinates": {{ place.coordinates }}
           },
           "properties": {
-            "title": "«Легенды Москвы",
-            "placeId": "moscow_legends",
+            "title": "{{ place.title }}",
+            "placeId": "{{ place.placeId }}",
             "detailsUrl": "{% static "places/moscow_legends.json" %}"
           }
-        },
-        {
-          "type": "Feature",
-          "geometry": {
-            "type": "Point",
-            "coordinates": [37.64, 55.753676]
-          },
-          "properties": {
-            "title": "Крыши24.рф",
-            "placeId": "roofs24",
-            "detailsUrl": "{% static "places/roofs24.json" %}"
-          }
         }
+        {% if not forloop.last %}
+            ,
+        {% endif %}
+    {% endfor %}
       ]
     }
   </script>
@@ -86,10 +79,11 @@
       <div class="place-description" v-if="selectedPlace">
 
         <img v-if="mainPhotoSrc" v-bind:src="mainPhotoSrc" class="d-block shadow mb-3 rounded" v-bind:alt="selectedPlace.title">
-
+        {% verbatim %}
         <h5 class="mb-3">{{ selectedPlace.title }}</h5>
 
         <p>{{ selectedPlace.short_description }}</p>
+        {% endverbatim %}
 
         <div id="place-photos" class="carousel slide mb-3 shadow" data-ride="carousel" data-interval="5000">
           <ol class="carousel-indicators">
