@@ -50,9 +50,9 @@
             "coordinates": {{ place.coordinates }}
           },
           "properties": {
-            "title": "{{ place.title }}",
+            "title": "{{ place.title_on_map }}",
             "placeId": "{{ place.placeId }}",
-            "detailsUrl": "{% static "places/moscow_legends.json" %}"
+            "detailsUrl": "/places/{{ place.id }}/"
           }
         }
         {% if not forloop.last %}
