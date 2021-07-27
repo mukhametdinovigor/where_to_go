@@ -17,7 +17,7 @@ class Place(models.Model):
 class Image(models.Model):
     title = models.ForeignKey(Place, related_name='images', on_delete=models.CASCADE)
     image = models.ImageField('Фото', upload_to='images/')
-    order = models.PositiveIntegerField('Номер', blank=True)
+    order = models.PositiveIntegerField('Номер', default=0, blank=True)
 
     def __str__(self):
         return f'{self.order} {str(self.title)}'
