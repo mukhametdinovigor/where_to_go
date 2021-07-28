@@ -24,7 +24,7 @@ ALLOWED_HOSTS = env.str("ALLOWED_HOSTS", '*')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
-STATIC_ROOT = ''
+# STATIC_ROOT = ''
 
 INSTALLED_APPS = [
     'django.contrib.admin',
