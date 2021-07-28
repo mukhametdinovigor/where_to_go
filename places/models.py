@@ -1,12 +1,13 @@
 from django.db import models
+from tinymce import models as tinymce_models
 
 
 class Place(models.Model):
     title_on_map = models.CharField('Название на карте', max_length=200)
     place_id = models.CharField(max_length=200)
     title = models.CharField('Название', max_length=200)
-    description_short = models.TextField('Описание')
-    description_long = models.TextField('Текст')
+    description_short = tinymce_models.HTMLField('Описание')
+    description_long = tinymce_models.HTMLField('Текст')
     longitude = models.FloatField('Долгота')
     latitude = models.FloatField('Широта')
 
