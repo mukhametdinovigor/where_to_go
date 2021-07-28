@@ -1,0 +1,6 @@
+Django==3.2.5
+environs==9.3.2
+django-admin-sortable2==1.0
+django-tinymce==3.3.0
+environs==9.3.2
+Pillow==8.3.1
