@@ -20,10 +20,9 @@ DEBUG = env.bool("DEBUG", True)
 ALLOWED_HOSTS = env.str("ALLOWED_HOSTS", '*')
 
 
-# Application definition
-# STATICFILES_DIRS = [
-#     os.path.join(BASE_DIR, 'static'),
-# ]
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static_src'),
+]
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 INSTALLED_APPS = [
