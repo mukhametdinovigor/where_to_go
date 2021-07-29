@@ -26,9 +26,7 @@ def get_place(place):
 
 def serialize_place(place):
     return {
-        'title_on_map': place.title_on_map,
         'title': place.title,
-        'placeId': place.place_id,
         'coordinates': [place.longitude, place.latitude],
         'id': place.id
     }
