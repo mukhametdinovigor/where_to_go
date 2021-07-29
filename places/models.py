@@ -6,7 +6,7 @@ class Place(models.Model):
     title_on_map = models.CharField('Название на карте', max_length=200)
     place_id = models.CharField(max_length=200)
     title = models.CharField('Название', max_length=200)
-    description_short = tinymce_models.HTMLField('Описание')
+    description_short = models.TextField('Описание')
     description_long = tinymce_models.HTMLField('Текст')
     longitude = models.FloatField('Долгота')
     latitude = models.FloatField('Широта')
