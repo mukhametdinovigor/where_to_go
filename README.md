@@ -58,6 +58,35 @@ python3 manage.py createsuperuser
 отображаться маркер. Кликнув по нему, можно будет увидеть всю информацию, которая была внесена в админку.
 Порядок фотографий в админке можно менять путём перетаскивания мышью.
 
+Также данные можно залить с помощью консольной команды `load_place`
+
+```bash
+python manage.py load_place http://адрес/файла.json
+```
+Файл json должен выглядеть так:
+
+```json
+{
+    "title": "Генератор Маркса или «Катушка Тесла»",
+    "imgs": [
+        "https://raw.githubusercontent.com/devmanorg/where-to-go-places/master/media/d3b5cc74cc94c802b51c85542b2f9ad5.jpg",
+        "https://raw.githubusercontent.com/devmanorg/where-to-go-places/master/media/b742b82f77028d6a8c9be681cab25a3d.jpg",
+        "https://raw.githubusercontent.com/devmanorg/where-to-go-places/master/media/57f990fd24a55324fc1fc541cac41b99.jpg",
+        "https://raw.githubusercontent.com/devmanorg/where-to-go-places/master/media/2d5be0d4e83fdde3e8c98f18e0d2e365.jpg",
+        "https://raw.githubusercontent.com/devmanorg/where-to-go-places/master/media/d4a8ab43eff1f7e83491610682d13984.jpg",
+        "https://raw.githubusercontent.com/devmanorg/where-to-go-places/master/media/7945e1e565530ab6943c40d64f21cfb7.jpg"
+    ],
+    "description_short": "Место, в котором рождаются искусственные молнии и облака.",
+    "description_long": "<p>Внешний вид этого монстроподобного, внушительного комплекса заставляет сердца посетителей биться чаще, а некоторое сходство с катушкой Тесла (на самом деле это генератор Аркадьева-Маркса) влечёт сюда всех любителей научпопа, индастриала и других интересующихся. Для того, чтобы попасть на территорию действующего испытательного стенда ВНИЦ ВЭИ, коим и является это окутанное мифами место, рекомендуется договориться с охраной. Несанкционированное попадание в пределы испытаний может повлечь самые серьёзные последствия!</p>",
+    "coordinates": {
+        "lng": "36.88324860715219",
+        "lat": "55.92555463090268"
+    }
+}
+```
+
+Тестовые данные можно взять [здесь](https://github.com/devmanorg/where-to-go-places) 
+
 ## Цели проекта
 
 Код написан в учебных целях — это урок в курсе по Python и веб-разработке на сайте [Devman](https://dvmn.org).
