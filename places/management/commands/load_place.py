@@ -37,7 +37,7 @@ class Command(BaseCommand):
         folder = 'media/downloaded_images'
         for img_url in response.json()['imgs']:
             image = get_object_or_404(Place, title=response.json()['title']).images.\
-                get_or_create(title=response.json()['title'], order=img_order_field)
+                get_or_create(place=response.json()['title'], order=img_order_field)
             img_to_upload = open(self.download_image(img_url, folder), 'rb')
             image[0].image.save(os.path.basename(img_url), img_to_upload, save=True)
             img_order_field += 1
