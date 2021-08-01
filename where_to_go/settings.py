@@ -2,6 +2,7 @@ import os
 from pathlib import Path
 from environs import Env
 
+
 env = Env()
 env.read_env()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -15,9 +16,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = env.str("SECRET_KEY", 'django-insecure-k6gko1(bj#g(2wwf)l8vtcgr=09frdt17yq+!p*p8@1hd_&yx-')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env.bool("DEBUG", 'True')
+DEBUG = env.bool("DEBUG", True)
 
-ALLOWED_HOSTS = env.str("ALLOWED_HOSTS", '*')
+ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', '127.0.0.1, mukhametdinovigor.pythonanywhere.com')
 
 
 STATICFILES_DIRS = [
