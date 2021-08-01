@@ -19,6 +19,10 @@ class ImageInline(SortableInlineAdminMixin, admin.TabularInline):
     fields = ('place', 'image', 'get_preview')
 
 
+class ImageAdmin(admin.ModelAdmin):
+    raw_id_fields = ('place',)
+
+
 class PlaceAdmin(admin.ModelAdmin):
     inlines = [
         ImageInline,
@@ -26,5 +30,5 @@ class PlaceAdmin(admin.ModelAdmin):
     search_fields = ('title',)
 
 
-admin.site.register(Image)
+admin.site.register(Image, ImageAdmin)
 admin.site.register(Place, PlaceAdmin)
