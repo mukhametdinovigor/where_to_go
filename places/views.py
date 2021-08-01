@@ -24,20 +24,27 @@ def get_place(place):
     }
 
 
-def serialize_place(place):
-    return {
-        'title': place.title,
-        'coordinates': [place.longitude, place.latitude],
-        'id': place.id
-    }
-
-
 def index(request):
     places = Place.objects.all()
+    places_geojson = {'type': 'FeatureCollection',
+                      'features': []}
+    for place in places:
+        places_geojson['features'].append(
+            {
+                'type': 'Feature',
+                'geometry': {
+                    'type': 'Point',
+                    'coordinates': [place.longitude, place.latitude]
+                },
+                'properties': {
+                    'title': place.title,
+                    'detailsUrl': f"/places/{place.id}/"
+                }
+            }
+        )
+
     context = {
-        'places': [
-            serialize_place(place) for place in places
-        ]
+        'places': places_geojson
     }
     return render(request, 'index.html', context)
 
