@@ -35,11 +35,9 @@ class Command(BaseCommand):
                 'latitude': place_attrs['coordinates']['lat']
             }
         )
-        img_order_field = 1
         folder = 'media/downloaded_images'
-        for img_url in response.json()['imgs']:
+        for img_number, img_url in enumerate(response.json()['imgs'], start=1):
             image = get_object_or_404(Place, title=response.json()['title']).images.\
-                get_or_create(place=response.json()['title'], order=img_order_field)
+                get_or_create(place=response.json()['title'], order=img_number)
             img_to_upload = open(self.download_image(img_url, folder), 'rb')
             image[0].image.save(os.path.basename(img_url), img_to_upload, save=True)
-            img_order_field += 1
