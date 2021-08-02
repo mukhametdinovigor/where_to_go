@@ -26,7 +26,7 @@ class Command(BaseCommand):
         response = requests.get(place_url)
         response.raise_for_status()
         place_attrs = response.json()
-        Place.objects.get_or_create(
+        place, created = Place.objects.get_or_create(
             title=response.json()['title'],
             defaults={
                 'description_short': place_attrs['description_short'],
@@ -37,7 +37,7 @@ class Command(BaseCommand):
         )
         folder = 'media/downloaded_images'
         for img_number, img_url in enumerate(response.json()['imgs'], start=1):
-            image = get_object_or_404(Place, title=response.json()['title']).images.\
-                get_or_create(place=response.json()['title'], order=img_number)
-            img_to_upload = open(self.download_image(img_url, folder), 'rb')
-            image[0].image.save(os.path.basename(img_url), img_to_upload, save=True)
+            image = get_object_or_404(Place, title=place.title).images.\
+                get_or_create(place=place.title, order=img_number)
+            with open(self.download_image(img_url, folder), 'rb') as img_to_upload:
+                image[0].image.save(os.path.basename(img_url), img_to_upload, save=True)
