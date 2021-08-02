@@ -13,8 +13,8 @@ class ImageInline(SortableInlineAdminMixin, admin.TabularInline):
 
 
     def get_preview(self, obj):
-        return format_html('<img src={} width={} height={} style="max-height:150px; width:auto;"/>',
-                           mark_safe(obj.image.url), obj.image.width, obj.image.height)
+        return format_html('<img src={} style="max-height:150px; max-width:300px;"/>',
+                           mark_safe(obj.image.url))
 
     fields = ('place', 'image', 'get_preview')
 
