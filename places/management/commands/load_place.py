@@ -28,10 +28,12 @@ class Command(BaseCommand):
         place_attrs = response.json()
         Place.objects.get_or_create(
             title=response.json()['title'],
-            description_short=place_attrs['description_short'],
-            description_long=place_attrs['description_long'],
-            longitude=place_attrs['coordinates']['lng'],
-            latitude=place_attrs['coordinates']['lat']
+            defaults={
+                'description_short': place_attrs['description_short'],
+                'description_long': place_attrs['description_long'],
+                'longitude': place_attrs['coordinates']['lng'],
+                'latitude': place_attrs['coordinates']['lat']
+            }
         )
         img_order_field = 1
         folder = 'media/downloaded_images'
